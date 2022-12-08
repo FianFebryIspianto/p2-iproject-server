@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     // create Profile
     sequelize.models.Profile.create({
       name: user.email,
-      profilePict: "https://i.stack.imgur.com/l60Hf.png",
+      profilePict: "https://i.ibb.co/GHx45w5/images.png",
       about: "About me",
       job: "Job",
       company: "Company",

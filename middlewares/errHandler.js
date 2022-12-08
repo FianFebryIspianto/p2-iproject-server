@@ -34,9 +34,9 @@ async function errHandler(err, req, res, next) {
     res.status(400).json({
       message: "File format not supported",
     });
-  } else if (err.name == "AlreadyFavorite") {
-    res.status(400).json({
-      message: "Already Favorite",
+  } else if (err.name == "InvalidToken") {
+    res.status(401).json({
+      message: "Invalid Code",
     });
   } else if (err.code == "LIMIT_FILE_SIZE") {
     res.status(400).json({

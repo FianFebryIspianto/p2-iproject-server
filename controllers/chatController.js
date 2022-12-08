@@ -30,7 +30,7 @@ class ChatController {
         profilePict: profileReceiver.profilePict,
         UserId: profileReceiver.UserId,
       };
-      console.log(dataSender, "<<<");
+      // console.log(dataSender, "<<<");
       const id = +req.user.id;
       const ReceiverId = +req.body.ReceiverId;
       const result = await db.collection("Chat").add({

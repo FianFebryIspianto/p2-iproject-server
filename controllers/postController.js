@@ -11,7 +11,7 @@ class PostController {
             include: [
               {
                 model: Profile,
-                attributes: ["name", "profilePict"],
+                attributes: ["name", "profilePict", "job", "company"],
               },
             ],
           },
