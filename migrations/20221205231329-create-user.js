@@ -14,10 +14,16 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      statusTwoFAuth: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

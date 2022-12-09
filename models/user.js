@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      statusTwoFAuth: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

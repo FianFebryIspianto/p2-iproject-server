@@ -47,10 +47,17 @@ class ProfileController {
   static async getProfile(req, res, next) {
     try {
       const { id } = req.user;
+      // find profile include user just isPass
       const dataFind = await Profile.findOne({
         where: {
           UserId: id,
         },
+        include: [
+          {
+            model: User,
+            attributes: ["statusTwoFAuth"],
+          },
+        ],
       });
       // change dataFind.dateOfBirth to yyyy-mm-dd without timezone
       dataFind.dateOfBirth = dataFind.dateOfBirth.toISOString().split("T")[0];

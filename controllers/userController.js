@@ -38,7 +38,9 @@ class UserController {
       let payload = { id: user.id, email: user.email };
       const access_token = signToken(payload);
 
-      res.status(200).json({ id: user.id, access_token });
+      res
+        .status(200)
+        .json({ id: user.id, access_token, isPass: user.statusTwoFAuth });
     } catch (err) {
       next(err);
     }
@@ -101,6 +103,34 @@ class UserController {
       }
       console.log(verified);
       res.status(200).json({ message: "Token verified" });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async update2FA(req, res, next) {
+    try {
+      const { id } = req.user;
+      const findUser = await User.findOne({ where: { id } });
+      let status;
+      if (findUser.statusTwoFAuth) {
+        status = false;
+      } else {
+        status = true;
+      }
+      const updated = await User.update(
+        { statusTwoFAuth: status },
+        { where: { id } }
+      );
+      res.status(200).json({ message: "Success update 2FA" });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async deleteUser(req, res, next) {
+    try {
+      const { id } = req.user;
+      const deleted = await User.destroy({ where: { id } });
+      res.status(200).json({ message: "Success delete user" });
     } catch (error) {
       next(error);
     }

@@ -10,4 +10,6 @@ router.get("/chat/:ReceiverId", ChatController.readChat);
 router.post("/chat", ChatController.addChat);
 router.get("/2FA", UserController.get2FA);
 router.post("/2FA", UserController.verify2FAToken);
+router.patch("/2FA", UserController.update2FA);
+router.delete("/", UserController.deleteUser);
 module.exports = router;
